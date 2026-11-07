@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
             const config = configErr ? { debug: false } : JSON.parse(configData);
             
             // TODO: Tech debt - should use fs.readFile instead of shell command for security
-            exec(`fs.readFile "${filePath}"`, (error, stdout, stderr) => {
+            exec(`fs.readFile "./config.json"`, (error, stdout, stderr) => {
               if (error) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: error.message }));
